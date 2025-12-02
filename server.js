@@ -112,9 +112,7 @@ async function extractTextFromFile(filePath, fileType) {
             return fs.readFileSync(filePath, 'utf-8');
         }
         
-        // Para PDFs (requiere librería adicional)
         if (fileType.includes('application/pdf')) {
-            // Necesitarías instalar: npm install pdf-parse
             // const pdf = require('pdf-parse');
             // const dataBuffer = fs.readFileSync(filePath);
             // const data = await pdf(dataBuffer);
@@ -122,19 +120,15 @@ async function extractTextFromFile(filePath, fileType) {
             return `[Contenido de PDF extraído: ${path.basename(filePath)}]`;
         }
         
-        // Para documentos Word (requiere librería adicional)
         if (fileType.includes('application/msword') || 
             fileType.includes('application/vnd.openxmlformats-officedocument.wordprocessingml.document')) {
-            // Necesitarías instalar: npm install mammoth
             // const mammoth = require('mammoth');
             // const result = await mammoth.extractRawText({path: filePath});
             // return result.value;
             return `[Contenido de documento Word extraído: ${path.basename(filePath)}]`;
         }
         
-        // Para imágenes (requiere OCR)
         if (fileType.includes('image/')) {
-            // Necesitarías instalar: npm install tesseract.js
             // const Tesseract = require('tesseract.js');
             // const result = await Tesseract.recognize(filePath, 'spa');
             // return result.data.text;
